@@ -1,0 +1,140 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+
+:root {
+    --header-height: 80px;
+
+    --color-primario: #0f0f0f;
+    --color-secundario: #f1f1f1;
+
+}
+
+body {
+    min-height: 100dvh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(180deg, #123456, #654321);
+}
+
+main {
+    width: 70vw;
+    height: 600px;
+    background: whitesmoke;
+    padding: 10px;
+    display: flex;
+
+
+    & .form {
+        width: 40%;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & input,
+        select {
+            width: 80%;
+            margin-block: 10px;
+            padding: 8px 16px;
+            border: none;
+            outline: none;
+            background: #abc6e0;
+            color: #123456;
+            border-radius: 5px;
+        }
+
+    }
+
+    & .listado {
+        width: 60%;
+        height: 100%;
+        border-left: 1px solid gray;
+        padding: 10px;
+        justify-content: start;
+        align-items: center;
+        overflow-y: scroll;
+    }
+}
+
+a:not(#borrar) {
+    text-decoration: none;
+    padding: 8px 20px;
+    background: #123456;
+    color: whitesmoke;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    margin-block: 20px;
+}
+
+a:is(#borrar) {
+    text-decoration: none;
+    padding: 6px 15px;
+    background: #dd3106;
+    color: whitesmoke;
+    font-weight: 700;
+    font-size: .8rem;
+    border-radius: 8px;
+    margin-block: 20px;
+    position: absolute;
+    top: -9px;
+    right: 12px;
+}
+
+
+.article {
+    width: 590px;
+    height: 100px;
+    border-radius: 15px;
+    margin-block: 15px;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+
+.avatar {
+    width: 70px;
+}
+
+.datos {
+    /* border: 1px solid blue; */
+    height: 100%;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.salario {
+    font-size: .9rem;
+    color: green;
+    font-weight: 800;
+    position: absolute;
+    right: 22px;
+    bottom: 7px;
+}
+
+.salario:before{
+    content:'\20AC'
+}
+
+::placeholder {
+    color: #123456;
+}
+
+.alert {
+    border: 1px solid rgb(183, 23, 50) !important;
+}
