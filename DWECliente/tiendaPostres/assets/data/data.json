@@ -1,0 +1,119 @@
+{
+  "dessets": [
+    {
+      "name": "Pastel de Chocolate",
+      "categorie": "Pasteles",
+      "price": 5.5,
+      "image": "https://placehold.co/600x400/4B2C2C/FFF?text=Pastel+de+Chocolate",
+      "count": 10
+    },
+    {
+      "name": "Pastel de Zanahoria",
+      "categorie": "Pasteles",
+      "price": 4.5,
+      "image": "https://placehold.co/600x400/F8A488/FFF?text=Pastel+de+Zanahoria",
+      "count": 8
+    },
+    {
+      "name": "Cheesecake",
+      "categorie": "Pasteles",
+      "price": 6.0,
+      "image": "https://placehold.co/600x400/FCE5CD/333?text=Cheesecake",
+      "count": 15
+    },
+    {
+      "name": "Tarta de Manzana",
+      "categorie": "Pasteles",
+      "price": 5.0,
+      "image": "https://placehold.co/600x400/8FBC8B/333?text=Tarta+de+Manzana",
+      "count": 5
+    },
+
+    {
+      "name": "Helado de Vainilla",
+      "categorie": "Helados",
+      "price": 3.0,
+      "image": "https://placehold.co/600x400/F3E5AB/333?text=Helado+de+Vainilla",
+      "count": 12
+    },
+    {
+      "name": "Helado de Chocolate",
+      "categorie": "Helados",
+      "price": 3.5,
+      "image": "https://placehold.co/600x400/7B3F00/FFF?text=Helado+de+Chocolate",
+      "count": 10
+    },
+    {
+      "name": "Helado de Fresa",
+      "categorie": "Helados",
+      "price": 3.2,
+      "image": "https://placehold.co/600x400/F5A9BC/333?text=Helado+de+Fresa",
+      "count": 14
+    },
+    {
+      "name": "Helado de Pistacho",
+      "categorie": "Helados",
+      "price": 3.8,
+      "image": "https://placehold.co/600x400/7BA05B/FFF?text=Helado+de+Pistacho",
+      "count": 6
+    },
+
+    {
+      "name": "Ensalada de Frutas",
+      "categorie": "Postres Saludables",
+      "price": 4.0,
+      "image": "https://placehold.co/600x400/E4F1A5/333?text=Ensalada+de+Frutas",
+      "count": 7
+    },
+    {
+      "name": "Yogurt con Miel y Frutas",
+      "categorie": "Postres Saludables",
+      "price": 4.5,
+      "image": "https://placehold.co/600x400/F7C9A9/333?text=Yogurt+con+Miel+y+Frutas",
+      "count": 9
+    },
+    {
+      "name": "Smoothie de Frutas",
+      "categorie": "Postres Saludables",
+      "price": 5.0,
+      "image": "https://placehold.co/600x400/DEA5A4/333?text=Smoothie+de+Frutas",
+      "count": 11
+    },
+    {
+      "name": "Açaí Bowl",
+      "categorie": "Postres Saludables",
+      "price": 6.5,
+      "image": "https://placehold.co/600x400/7A306C/FFF?text=Acai+Bowl",
+      "count": 4
+    },
+
+    {
+      "name": "Malteada de Chocolate",
+      "categorie": "Bebidas Dulces",
+      "price": 4.0,
+      "image": "https://placehold.co/600x400/4B2C2C/FFF?text=Malteada+de+Chocolate",
+      "count": 13
+    },
+    {
+      "name": "Café Affogato",
+      "categorie": "Bebidas Dulces",
+      "price": 4.5,
+      "image": "https://placehold.co/600x400/8B4513/FFF?text=Cafe+Affogato",
+      "count": 6
+    },
+    {
+      "name": "Batido de Mango",
+      "categorie": "Bebidas Dulces",
+      "price": 4.2,
+      "image": "https://placehold.co/600x400/F5A623/333?text=Batido+de+Mango",
+      "count": 8
+    },
+    {
+      "name": "Frappuccino de Caramelo",
+      "categorie": "Bebidas Dulces",
+      "price": 5.0,
+      "image": "https://placehold.co/600x400/D2B48C/333?text=Frappuccino+de+Caramelo",
+      "count": 10
+    }
+  ]
+}
