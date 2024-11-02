@@ -3,56 +3,56 @@ const menuPostres = [
     name: 'Pastel de Chocolate',
     categorie: 'Pasteles',
     price: 5.5,
-    image: '/assets/img/cake-3577073_1280.jpg',
+    image: './assets/img/cake-3577073_1280.jpg',
     count: 10,
   },
   {
     name: 'Pastel de Zanahoria',
     categorie: 'Pasteles',
     price: 4.5,
-    image: '/assets/img/carrot-cake-2771296_1280.jpg',
+    image: './assets/img/carrot-cake-2771296_1280.jpg',
     count: 8,
   },
   {
     name: 'Cheesecake',
     categorie: 'Pasteles',
     price: 6.0,
-    image: '/assets/img/cheesecake-2598695_1280.jpg',
+    image: './assets/img/cheesecake-2598695_1280.jpg',
     count: 15,
   },
   {
     name: 'Tarta de Manzana',
     categorie: 'Pasteles',
     price: 5.0,
-    image: '/assets/img/dessert-6795726_1280.jpg',
+    image: './assets/img/dessert-6795726_1280.jpg',
     count: 5,
   },
   {
     name: 'Helado de Vainilla',
     categorie: 'Helados',
     price: 3.0,
-    image: '/assets/img/R.jpeg',
+    image: './assets/img/R.jpeg',
     count: 12,
   },
   {
     name: 'Helado de Chocolate',
     categorie: 'Helados',
     price: 3.5,
-    image: '/assets/img/6b724913a4d64d47fb47cabc72718075.jpg',
+    image: './assets/img/6b724913a4d64d47fb47cabc72718075.jpg',
     count: 10,
   },
   {
     name: 'Helado de Fresa',
     categorie: 'Helados',
     price: 3.2,
-    image: '/assets/img/OIP.jpeg',
+    image: './assets/img/OIP.jpeg',
     count: 14,
   },
   {
     name: 'Helado de Pistacho',
     categorie: 'Helados',
     price: 3.8,
-    image: '/assets/img/pistacho.jpeg',
+    image: './assets/img/pistacho.jpeg',
     count: 6,
   },
 
@@ -60,7 +60,7 @@ const menuPostres = [
     name: 'Ensalada de Frutas',
     categorie: 'Postres Saludables',
     price: 4.0,
-    image: '/assets/img/frutas.jpeg',
+    image: './assets/img/frutas.jpeg',
     count: 7,
   },
 ]
@@ -138,6 +138,10 @@ const createProducts = () => {
     btn_add.addEventListener('click', () => {
       menuPostres[i].incart = 1
 
+      if (Object.keys(cart).length == 0) {
+        toggleCart()
+      }
+
       span_counter.innerText = menuPostres[i].incart
       cart[id] = menuPostres[i]
       btn_more.classList.toggle('oculto')
@@ -151,7 +155,6 @@ const createProducts = () => {
       --cart[id].incart
 
       const position = positionInCarById(id)
-      updateCar({ id, position })
 
       if (cart[id].incart == 0) {
         btn_more.classList.toggle('oculto')
@@ -160,9 +163,12 @@ const createProducts = () => {
 
         const list = document.getElementById('list_of_cart')
         list.removeChild(list.children[position])
+        delete cart[id]
+      } else {
+        span_counter.innerText = `${cart[id].incart}` || '0'
       }
 
-      span_counter.innerText = `${cart[id].incart}` || '0'
+      updateValoresCarrito()
     })
 
     span_more.addEventListener('click', () => {
@@ -185,7 +191,7 @@ const createCart = (id) => {
   let list_of_cart = document.getElementById('list_of_cart')
 
   const li = document.createElement('li')
-  li.classList.add('animate__animated', 'animate__fadeIn', 'animate__slow')
+  li.classList.add('animate__animated', 'animate__fadeIn', 'animate__slower')
 
   const p_nombre = document.createElement('p')
   li.appendChild(p_nombre)
@@ -217,31 +223,91 @@ const createCart = (id) => {
   li.appendChild(icono_borrar)
 
   list_of_cart.appendChild(li)
-  totalOfCart()
+  updateValoresCarrito()
 
   document.getElementById(`${id}`).addEventListener('click', (oObject) => {
     const id = oObject.target.id
-    const indexMenu = menuPostres.findIndex((el) => el.id == id)
 
-    const article = document.querySelectorAll('#container_desserts article')[
-      indexMenu
-    ]
-    const containerDetails = article.querySelectorAll('.container_details')[0]
-    containerDetails.querySelectorAll('.btn_more')[0].classList.toggle('oculto')
-    containerDetails.querySelectorAll('#btn_add')[0].classList.toggle('oculto')
+    resetProducts(id)
+  })
+}
 
-    const position = positionInCarById(id)
-    const listItems = Array.from(document.querySelectorAll('#list_of_cart li'))
-    
-    if (position >= 0 && position < listItems.length) {
-      listItems[position].remove()
-    } else {
-      console.log('Posición inválida')
+/**
+ * The `updateValoresCarrito` function updates the total number of products and the total value of the
+ * cart displayed on a webpage.
+ */
+const updateValoresCarrito = () => {
+  const { totalCarrito, totalProducts } = totalOfCart()
+
+  document.getElementById('h2_total').innerHTML = `Your Cart (${totalProducts})`
+
+  document.getElementById(
+    'total_cart'
+  ).innerHTML = `&euro;${totalCarrito.toFixed(2)}`
+
+  if (Object.keys(cart).length == 0) {
+    toggleCart()
+  }
+}
+
+/**
+ * The function `createOrderConfirmation` generates an order confirmation summary based on the items in
+ * the cart.
+ */
+const createOrderConfirmation = () => {
+  const ulResumeOrderConfirm = document.getElementById('resume')
+
+  if (ulResumeOrderConfirm.hasChildNodes) {
+    while (ulResumeOrderConfirm.firstChild) {
+      ulResumeOrderConfirm.removeChild(ulResumeOrderConfirm.firstChild)
+    }
+  }
+
+  if (Object.keys(cart).length > 0) {
+    for (const [key, value] of Object.entries(cart)) {
+      const resumeOrderOfCar = document.createElement('li')
+
+      const imgProduct = document.createElement('img')
+      resumeOrderOfCar.appendChild(imgProduct)
+      imgProduct.src = value.image
+
+      const divDataResume = document.createElement('div')
+      divDataResume.classList.add('data_resume')
+      resumeOrderOfCar.appendChild(divDataResume)
+
+      const pNameProduct = document.createElement('p')
+      pNameProduct.innerText = value.name
+      pNameProduct.classList.add('nombre_producto')
+      divDataResume.appendChild(pNameProduct)
+
+      const divCantProduct = document.createElement('div')
+      divCantProduct.classList.add('cantidad_producto')
+      divDataResume.appendChild(divCantProduct)
+
+      const spanCant = document.createElement('span')
+      spanCant.innerHTML = `${value.incart}x`
+      divCantProduct.appendChild(spanCant)
+
+      const spanPriceUnit = document.createElement('span')
+      spanPriceUnit.innerHTML = `&#64; &euro;${Number(value.price).toFixed(2)}`
+      divCantProduct.appendChild(spanPriceUnit)
+
+      const pTotalProduct = document.createElement('p')
+      pTotalProduct.innerHTML = `&euro;${(
+        Number(value.incart) * Number(value.price)
+      ).toFixed(2)}`
+      pTotalProduct.classList.add('total_producto')
+      resumeOrderOfCar.appendChild(pTotalProduct)
+
+      ulResumeOrderConfirm.appendChild(resumeOrderOfCar)
     }
 
-    delete cart[id]
-    totalOfCart()
-  })
+    const { totalCarrito } = totalOfCart()
+
+    document
+      .getElementById('total_resume')
+      .querySelectorAll('p')[1].innerHTML = `&euro; ${totalCarrito.toFixed(2)}`
+  }
 }
 
 /**
@@ -261,7 +327,7 @@ const updateCar = ({ id, position }) => {
     position
   ].innerHTML = `&euro;${Number(cart[id].price * cart[id].incart).toFixed(2)}`
 
-  totalOfCart()
+  updateValoresCarrito()
 }
 
 /**
@@ -279,13 +345,16 @@ const totalOfCart = () => {
     0
   )
 
-  document.getElementById('h2_total').innerHTML = `Your Cart (${totalProducts})`
-
-  document.getElementById(
-    'total_cart'
-  ).innerHTML = `&euro; ${totalCarrito.toFixed(2)}`
+  return { totalCarrito, totalProducts }
 }
 
+/**
+ * The function `positionInCarById` returns the index of a list item element within its parent
+ * unordered list element based on the provided element ID.
+ * @param id - The `id` parameter is the unique identifier of an element in the HTML document.
+ * @returns The function `positionInCarById` returns the index of the `<li>` element within its parent
+ * `<ul>` element.
+ */
 const positionInCarById = (id) => {
   const childElement = document.getElementById(id)
   const liElement = childElement.closest('li')
@@ -293,6 +362,14 @@ const positionInCarById = (id) => {
   return Array.from(ulElement.children).indexOf(liElement)
 }
 
+/**
+ * The uniqueId function generates a random unique identifier of a specified length.
+ * @param [length=16] - The `length` parameter in the `uniqueId` function specifies the length of the
+ * unique identifier that will be generated. By default, if no length is provided, the function will
+ * generate a unique identifier with a length of 16 characters.
+ * @returns The uniqueId function generates a random number based on the current timestamp and returns
+ * it as an integer with a specified length.
+ */
 const uniqueId = (length = 16) => {
   return parseInt(
     Math.ceil(Math.random() * Date.now())
@@ -300,6 +377,71 @@ const uniqueId = (length = 16) => {
       .toString()
       .replace('.', '')
   )
+}
+
+/* The above JavaScript code is adding an event listener to an element with the id "new_order". When
+this element is clicked, the code loops through the keys of an object named "cart" and calls a
+function named "resetProducts" for each key. After that, it calls functions named
+"updateValoresCarrito" and "toggleCart". */
+document.getElementById('new_order').addEventListener('click', () => {
+  for (const key of Object.keys(cart)) {
+    resetProducts(key)
+  }
+})
+
+/**
+ * The `resetProducts` function removes a product from the cart and updates the display accordingly.
+ * @param id - The `id` parameter in the `resetProducts` function is used to identify the specific
+ * product that needs to be reset. This function seems to be part of a larger codebase related to
+ * managing a list of products and a shopping cart. When the `resetProducts` function is called with a
+ * specific
+ */
+const resetProducts = (id) => {
+  const indexMenu = menuPostres.findIndex((el) => el.id == id)
+
+  const article = document.querySelectorAll('#container_desserts article')[
+    indexMenu
+  ]
+
+  const containerImagen = article.querySelectorAll('.container_img')[0]
+  containerImagen.classList.remove('border_in_car')
+
+  const containerDetails = article.querySelectorAll('.container_details')[0]
+
+  containerDetails.querySelectorAll('.btn_more')[0].classList.toggle('oculto')
+  containerDetails.querySelectorAll('#btn_add')[0].classList.toggle('oculto')
+
+  const position = positionInCarById(id)
+  const listItems = Array.from(document.querySelectorAll('#list_of_cart li'))
+
+  if (position >= 0 && position < listItems.length) {
+    listItems[position].remove()
+  } else {
+    console.log('Posición inválida')
+  }
+
+  delete cart[id]
+  updateValoresCarrito()
+}
+
+/* The above code is adding an event listener to a button with the id 'btn_confirm'. When the button is
+clicked, it will call the function createOrderConfirmation(). */
+document.getElementById('btn_confirm').addEventListener('click', () => {
+  createOrderConfirmation()
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+})
+
+/**
+ * The function `toggleCart` toggles the visibility of two elements with the IDs 'container_empty_car'
+ * and 'container_to_pay'.
+ */
+const toggleCart = () => {
+  document.getElementById('container_empty_car').classList.toggle('oculto')
+  document.getElementById('container_to_pay').classList.toggle('oculto')
 }
 
 createProducts()

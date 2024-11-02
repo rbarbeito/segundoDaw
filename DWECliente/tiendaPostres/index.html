@@ -32,24 +32,47 @@
     <main>
         <div id="container-principal">
             <h1>Desserts</h1>
-            <div id="container_desserts"></div>    
+            <div id="container_desserts"></div>
         </div>
 
         <!-- Carrito de compra -->
         <div id="container-cart">
             <h2 id="h2_total">Your Cart (0)</h2>
-            <ul id="list_of_cart"></ul>
-            <div class="order_total">
-                <span>Order Total</span>
-                <span id="total_cart">$ 0.00</span>
+            <div id="container_empty_car">
+                <img src="./assets/img/rb_47340.png" alt="">
+                <p>Your added items will appear here</p>
             </div>
-            <p class="carbon_neutral">This is a <strong> Carbon-neutral </strong> delivery</p>
-            <button id="btn_confirm">
-                Confirm Orden
-            </button>
+            <div id="container_to_pay"  class="oculto">
+                <ul id="list_of_cart"></ul>
+                <div class="order_total">
+                    <span>Order Total</span>
+                    <span id="total_cart">$ 0.00</span>
+                </div>
+                <p class="carbon_neutral">This is a <strong> Carbon-neutral </strong> delivery</p>
+                <button id="btn_confirm" popovertarget="confirmation" popovertargetaction="show">
+                    Confirm Orden
+                </button>
+            </div>
         </div>
     </main>
 
+
+    <div popover id="confirmation">
+        <i class="fa-regular fa-circle-check"></i>
+        <h2>Order Confirmed</h2>
+        <p>We hope you enjoy your food!</p>
+        <div id="container_ul">
+
+            <ul id="resume"> </ul>
+
+            <div id="total_resume">
+                <p>Order Total</p>
+                <p>&euro;0.00</p>
+            </div>
+        </div>
+
+        <button id="new_order" popovertarget="confirmation" popovertargetaction="hide">Star New Order</button>
+    </div>
 
 
     <script src="./assets/js/script.js" type="module"></script>
