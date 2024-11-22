@@ -1,0 +1,142 @@
+button {
+  border: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 0.04rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Afacad", sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+body {
+  height: 100dvh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  background: #A86B4C;
+}
+body header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px;
+}
+body header a {
+  color: #fff;
+  font-size: 64px;
+  text-shadow: 2px 4px 5px #1E1E1E;
+  font-weight: 900px;
+  text-decoration: none;
+}
+body header .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+body header .menu a {
+  color: #fff;
+  font-size: 38px;
+  font-weight: 600;
+  margin-inline: 30px;
+  cursor: pointer;
+}
+body main {
+  height: calc(100vh - 80px);
+  width: 100%;
+}
+body main section#menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 400px;
+}
+body main section#inicio {
+  height: 100%;
+  position: relative;
+}
+body main section#inicio img:nth-of-type(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(1px 1px 5px #888);
+}
+body main section#inicio img:nth-of-type(2) {
+  position: absolute;
+  bottom: 0;
+  right: -8px;
+  scale: 1.8;
+  filter: drop-shadow(1px 1px 5px #1E1E1E);
+}
+body main section#inicio h2 {
+  position: absolute;
+  color: #fff;
+  bottom: 170px;
+  width: 449px;
+  left: 30px;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  line-height: 2.2rem;
+}
+body main section#inicio button#accion_ya {
+  position: absolute;
+  bottom: 100px;
+  width: -moz-fit-content;
+  width: fit-content;
+  left: 196px;
+  background: #1E1E1E;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.4s all;
+}
+body main section#inicio button#accion_ya:hover {
+  background: #fff;
+  color: #1E1E1E;
+  box-shadow: 0 0 5px #fff;
+}
+body main section#inicio .redes {
+  position: absolute;
+  bottom: 30px;
+  left: 110px;
+}
+body main section#inicio .redes .fa-brands {
+  font-size: 1.7rem;
+  color: #1E1E1E;
+  transition: 0.4s all;
+  cursor: pointer;
+  margin-inline: 30px;
+}
+body main section#inicio .redes .fa-brands:hover {
+  scale: 1.2;
+  filter: drop-shadow(1px 1px 5px #fff);
+}
+
+.hidden {
+  display: none;
+  visibility: none;
+}
+
+.selected {
+  color: #1E1E1E !important;
+}/*# sourceMappingURL=style.css.map */

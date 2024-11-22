@@ -1,0 +1,111 @@
+@use 'variables'
+@use 'mixins'
+@use 'presets'
+
+*
+	padding: 0
+	margin: 0
+	box-sizing: border-box
+	font-size: 16px
+	font-family: "Afacad", sans-serif
+
+ol, ul
+	list-style: none
+
+button
+	@extend %button
+
+body
+	height: 100dvh
+	@include mixins.flexbox($jus: flex-start, $alig: center, $dir: column)
+	overflow: hidden
+	background: variables.$claro
+	header
+		height: 80px
+		@include mixins.flexbox($jus: space-between, $alig: center)
+		width: 100%
+		padding: 20px
+		a
+			color: variables.$blanco
+			font-size: 64px
+			text-shadow: 2px 4px 5px variables.$oscuro
+			font-weight: 900px
+			text-decoration: none
+		.menu
+			@include mixins.flexbox($jus: center, $alig: center)
+			a
+				color: variables.$blanco
+				font-size: 38px
+				font-weight: 600
+				margin-inline: 30px
+				cursor: pointer
+
+	main
+		height: calc(100vh - 80px)
+		width: 100%
+		section#menu
+			width: 100%
+			height: 100%
+			@include mixins.flexbox($jus: center, $alig: center)
+			gap: 400px
+
+		section#inicio
+			height: 100%
+			position: relative
+			img:nth-of-type(1)
+				position: absolute
+				top: 0
+				left: 0
+				filter: drop-shadow(1px 1px 5px #888)
+			img:nth-of-type(2)
+				position: absolute
+				bottom: 0
+				right: -8px
+				scale: 1.8
+				filter: drop-shadow(1px 1px 5px variables.$oscuro)
+
+			h2
+				position: absolute
+				color: variables.$blanco
+				bottom: 170px
+				width: 449px
+				left: 30px
+				font-size: 36px
+				text-align: center
+				letter-spacing: 0.05rem
+				line-height: 2.2rem
+			button#accion_ya
+				position: absolute
+				bottom: 100px
+				width: fit-content
+				left: 196px
+				background: variables.$oscuro
+				color: variables.$blanco
+				cursor: pointer
+				transition: 0.4s all
+				&:hover
+					background: variables.$blanco
+					color: variables.$oscuro
+					box-shadow: 0 0 5px variables.$blanco
+					
+
+			.redes
+				position: absolute
+				bottom: 30px
+				left: 110px
+				.fa-brands
+					font-size: 1.7rem
+					color: variables.$oscuro
+					transition: 0.4s all
+					cursor: pointer
+					margin-inline: 30px
+					&:hover
+						scale: 1.2
+						filter: drop-shadow(1px 1px 5px variables.$blanco)
+
+.hidden
+	display: none
+	visibility: none
+
+.selected
+	color: variables.$oscuro !important

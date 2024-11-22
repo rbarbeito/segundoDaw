@@ -138,7 +138,7 @@ const createProducts = () => {
     btn_add.addEventListener('click', () => {
       menuPostres[i].incart = 1
 
-      if (Object.keys(cart).length == 0) {
+      if (Object.keys(cart).length === 0) {
         toggleCart()
       }
 
@@ -156,7 +156,7 @@ const createProducts = () => {
 
       const position = positionInCarById(id)
 
-      if (cart[id].incart == 0) {
+      if (cart[id].incart === 0) {
         btn_more.classList.toggle('oculto')
         btn_add.classList.toggle('oculto')
         container_img.classList.toggle('border_in_car')
@@ -245,7 +245,7 @@ const updateValoresCarrito = () => {
     'total_cart'
   ).innerHTML = `&euro;${totalCarrito.toFixed(2)}`
 
-  if (Object.keys(cart).length == 0) {
+  if (Object.keys(cart).length === 0) {
     toggleCart()
   }
 }
@@ -264,7 +264,7 @@ const createOrderConfirmation = () => {
   }
 
   if (Object.keys(cart).length > 0) {
-    for (const [key, value] of Object.entries(cart)) {
+    for (const [, value] of Object.entries(cart)) {
       const resumeOrderOfCar = document.createElement('li')
 
       const imgProduct = document.createElement('img')
@@ -312,6 +312,7 @@ const createOrderConfirmation = () => {
 
 /**
  * The `updateCar` function updates the quantity and total price of a product in the shopping cart.
+ * @param id
  * @param position - The `position` parameter in the `updateCar` function is used to specify the index
  * of the element in the `cart` array that needs to be updated in the HTML document. It is used to
  * target specific elements in the DOM and update their content based on the corresponding data in the
@@ -397,7 +398,7 @@ document.getElementById('new_order').addEventListener('click', () => {
  * specific
  */
 const resetProducts = (id) => {
-  const indexMenu = menuPostres.findIndex((el) => el.id == id)
+  const indexMenu = menuPostres.findIndex((el) => el.id === id)
 
   const article = document.querySelectorAll('#container_desserts article')[
     indexMenu
