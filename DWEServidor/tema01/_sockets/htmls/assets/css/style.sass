@@ -1,0 +1,43 @@
+@use 'variables'
+@use 'mixins'
+@use 'presets'
+
+*
+	padding: 0
+	margin: 0
+	box-sizing: border-box
+	font-size: 16px
+	font-family: 'Nunito', sans-serif
+
+ol, ul
+	list-style: none
+
+button
+	@extend %button
+
+body
+	min-height: 100dvh
+	@include mixins.flexbox($jus: center, $alig: center, $dir: column)
+	background: #123456
+	main
+		width: 400px
+		height: 200px
+		border-radius: 10px
+		background: #f3f3f3
+		padding: 10px
+		@include mixins.flexbox($jus: flex-start, $alig: center, $dir: column)
+		form
+			@include mixins.flexbox($jus: flex-start, $alig: center, $dir: column)
+			width: 100%
+
+			input
+				border: none
+				outline: none
+				background: #eee
+				border-radius: 8px
+				padding: 8px 16px
+				margin-block: 10px
+				width: 100%
+			button 
+				border: 1px solid #123456
+

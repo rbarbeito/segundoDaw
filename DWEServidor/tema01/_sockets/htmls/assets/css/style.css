@@ -1,0 +1,60 @@
+button {
+  border: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  letter-spacing: 0.04rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #123456;
+}
+body main {
+  width: 400px;
+  height: 200px;
+  border-radius: 10px;
+  background: #f3f3f3;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+body main form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+body main form input {
+  border: none;
+  outline: none;
+  background: #eee;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-block: 10px;
+  width: 100%;
+}
+body main form button {
+  border: 1px solid #123456;
+}/*# sourceMappingURL=style.css.map */
