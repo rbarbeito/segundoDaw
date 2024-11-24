@@ -1,0 +1,294 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+body {
+  background: #141414;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (width < 470px) {
+  header {
+    flex-direction: column;
+    justify-content: initial;
+    height: 120px;
+  }
+}
+header h1 {
+  color: #65459C;
+  font-size: 2.5rem;
+}
+header .menu {
+  display: flex;
+  align-items: center;
+}
+header .menu span {
+  margin-inline: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
+header .menu span:first-child {
+  font-size: 1.3rem;
+  color: #65459C;
+}
+
+main section#principal, main section#testimonios {
+  min-height: calc(100vh - 80px);
+  position: relative;
+  overflow: hidden;
+}
+main section#principal .circulo {
+  position: absolute;
+  right: -130px;
+  bottom: -200px;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: #65459C;
+}
+@media screen and (width < 470px) {
+  main section#principal .circulo {
+    display: none;
+  }
+}
+main section#principal .circulo img {
+  scale: 1.2;
+  transform: translate(-151px, -69px);
+  filter: drop-shadow(8px 5px 5px #222);
+}
+main section#principal .accion {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: clamp(300px, 90%, 500px);
+  top: 235px;
+  left: 10%;
+}
+@media screen and (max-width: 470px) {
+  main section#principal .accion {
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid red;
+  }
+}
+main section#principal .accion h2 {
+  font-size: 2.2rem;
+  margin-block: 6px;
+  letter-spacing: 0.1rem;
+}
+main section#principal .accion h2::after {
+  content: ".";
+  font-size: 2.5srem;
+  color: #65459C;
+}
+main section#principal .accion p {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  letter-spacing: 0.08rem;
+}
+main section#principal .accion .container_promo {
+  display: flex;
+  width: 60%;
+}
+@media screen and (max-width: 470px) {
+  main section#principal .accion .container_promo {
+    width: 100%;
+  }
+}
+main section#principal .accion .container_promo button {
+  background: #65459C;
+  padding: 10px 26px;
+  border-radius: 35px;
+  border: none;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-inline-end: 20px;
+  color: #fff;
+  font-weight: 700;
+  transition: 0.4s;
+  letter-spacing: 0.1rem;
+}
+main section#principal .accion .container_promo button:hover {
+  box-shadow: 0 0 15px #fff;
+}
+main section#principal .accion .container_promo .valor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main section#principal .accion .container_promo .valor span {
+  font-size: 1.1rem;
+}
+main section#principal .accion .container_promo .valor span:last-child {
+  color: #65459C;
+}
+main section#principal .accion .container_promo .valor span:first-of-type {
+  text-decoration: line-through;
+  color: white;
+}
+main section#principal .circulo {
+  position: absolute;
+}
+main section#testimonios p#testimnonio {
+  overflow: hidden;
+  position: absolute;
+  width: clamp(300px, 50% + 20px, 600px);
+  height: 100px;
+  right: 74px;
+  top: 464px;
+  text-overflow: clip;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+main section#testimonios .circulo_izq {
+  position: absolute;
+  left: -130px;
+  bottom: -200px;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: #65459C;
+}
+@media screen and (width < 470px) {
+  main section#testimonios .circulo_izq {
+    display: none;
+  }
+}
+main section#testimonios .circulo_izq img {
+  transform: translate(49px, -110px);
+  filter: drop-shadow(8px 10px 15px #222);
+}
+main section#testimonios .container_fotos {
+  position: absolute;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 50px;
+  right: 16px;
+  top: 106px;
+}
+main section#testimonios .container_fotos .banner_fondo {
+  width: 800px;
+  height: 65px;
+  position: absolute;
+  top: 43px;
+  right: -28px;
+  border-radius: 50px 0 0 50px;
+  background: #65459C;
+}
+main section#testimonios .container_fotos .imagen_testimonio {
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  z-index: 5;
+}
+main section#testimonios .container_fotos .imagen_testimonio .imagenPersona {
+  width: 100%;
+  height: auto;
+  display: cover;
+  border-radius: 10px;
+}
+main section#testimonios .container_fotos .imagen_testimonio p {
+  font-weight: 600;
+  z-index: 2;
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer .container_imagen {
+  width: clamp(410px, 80%, 900px);
+  height: 300px;
+  border-radius: 6px;
+  margin-block: 20px 60px;
+  background-image: url("../img/map.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+footer .avisos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 470px) {
+  footer .avisos {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid red;
+  }
+}
+footer .avisos span {
+  border: 1px solid red;
+  font-size: 0.9rem;
+  margin-inline: 45px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+footer .avisos span:hover {
+  color: #65459C;
+}
+footer .avisos span:hover:after {
+  content: "";
+  border-block-end-style: 2px soli white;
+}
+
+.persona_no_activa {
+  color: #fff;
+}
+
+.persona_activa {
+  color: #65459C;
+}
+
+.border_activo {
+  border: 4px solid #65459C;
+}
+
+.up {
+  width: 60px;
+  height: 60px;
+  background: #65459C;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.up .fa-solid {
+  font-size: 30px;
+}
+
+.hidden {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

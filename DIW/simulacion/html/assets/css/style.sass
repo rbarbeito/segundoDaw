@@ -1,0 +1,249 @@
+@use 'variables'
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    font-family: "Inter", sans-serif
+    font-size: 16px
+
+body
+    background: variables.$negro-fondo
+    min-height: 100dvh
+    display: flex
+    flex-direction: column
+    color: variables.$blanco
+
+header
+    width: 100%
+    height: 80px
+    padding: 20px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    @media screen and (width <470px)
+        flex-direction: column
+        justify-content: initial
+        height: 120px
+
+    h1
+        color: variables.$morado-letras
+        font-size: 2.5rem
+    .menu
+        display: flex
+        align-items: center
+        span
+            margin-inline: 30px
+            font-weight: 700
+            cursor: pointer
+            &:first-child
+                font-size: 1.3rem
+                color: variables.$morado-letras
+
+main
+    section#principal, section#testimonios
+        min-height: calc(100vh - 80px)
+        position: relative
+        overflow: hidden
+    section#principal
+
+        .circulo
+            position: absolute
+            right: -130px
+            bottom: -200px
+            width: 800px
+            height: 800px
+            border-radius: 50%
+            background: variables.$morado-letras
+            @media screen and (width <470px)
+                display: none
+            img
+                scale: 1.2
+                transform: translate(-151px, -69px)
+                filter: drop-shadow(8px 5px 5px #222)
+
+        .accion
+            position: absolute
+            display: flex
+            flex-direction: column
+            width: clamp(300px, 90%, 500px)
+            top: 235px
+            left: 10%
+            @media screen and ( max-width: 470px )
+                left: 50%
+                transform: translateX(-50%)
+                border: 1px solid red
+
+            h2
+                font-size: 2.2rem
+                margin-block: 6px
+                letter-spacing: .1rem
+                &::after
+                    content: '.'
+                    font-size: 2.5srem
+                    color: variables.$morado-letras
+            p
+                font-size: 1.3rem
+                margin-bottom: 25px
+                letter-spacing: .08rem
+
+            .container_promo
+                display: flex
+                width: 60%
+                @media screen and ( max-width: 470px )
+                    width: 100%
+
+                button
+                    background: variables.$morado-letras
+                    padding: 10px 26px
+                    border-radius: 35px
+                    border: none
+                    cursor: pointer
+                    width: fit-content
+                    margin-inline-end: 20px
+                    color: variables.$blanco
+                    font-weight: 700
+                    transition: 0.4s
+                    letter-spacing: .1rem
+                    &:hover
+                        box-shadow: 0 0 15px #fff
+                .valor
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    span
+                        font-size: 1.1rem
+                        &:last-child
+                            color: variables.$morado-letras
+                        &:first-of-type
+                            text-decoration: line-through
+                            color: lighten(variables.$blanco, 30% )
+
+        .circulo
+            position: absolute
+
+    section#testimonios
+        p#testimnonio
+            overflow: hidden
+            position: absolute
+            width: clamp(300px, 50% + 20px, 600px)
+            height: 100px
+            right: 74px
+            top: 464px
+            text-overflow: clip
+            overflow: hidden
+            white-space: pre-wrap
+
+        .circulo_izq
+            position: absolute
+            left: -130px
+            bottom: -200px
+            width: 700px
+            height: 700px
+            border-radius: 50%
+            background: variables.$morado-letras
+            @media screen and (width <470px)
+                display: none
+            img
+                transform: translate(49px, -110px)
+                filter: drop-shadow(8px 10px 15px #222)
+
+        .container_fotos
+            position: absolute
+            display: flex
+            width: fit-content
+            gap: 50px
+            right: 16px
+            top: 106px
+
+            .banner_fondo
+                width: 800px
+                height: 65px
+                position: absolute
+                top: 43px
+                right: -28px
+                border-radius: 50px 0 0 50px
+                background: variables.$morado-letras
+
+            .imagen_testimonio
+                width: 200px
+                height: 250px
+                display: flex
+                flex-direction: column
+                align-items: center
+                gap: 10px
+                border-radius: 10px
+                z-index: 5
+                .imagenPersona
+                    width: 100%
+                    height: auto
+                    display: cover
+                    border-radius: 10px
+
+                p
+                    font-weight: 600
+                    z-index: 2
+                    cursor: pointer
+
+footer
+    width: 100%
+    height: 70vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    .container_imagen
+        width: clamp(410px, 80%, 900px)
+        height: 300px
+        border-radius: 6px
+        margin-block: 20px 60px
+        background-image: url('../img/map.png')
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+    .avisos
+        display: flex
+        align-items: center
+        justify-content: center
+        @media screen and ( max-width: 470px )
+            flex-direction: column
+            align-items: flex-start
+            padding: 10px
+            border: 1px solid red
+        span
+            border: 1px solid red
+            font-size: .9rem
+            margin-inline: 45px
+            cursor: pointer
+            transition: 0.4s
+            &:hover
+                color: variables.$morado-letras
+                &:after
+                    content: ''
+                    border-block-end-style: 2px soli white
+.persona_no_activa
+    color: variables.$blanco
+
+.persona_activa
+    color: variables.$morado-letras
+
+.border_activo
+    border: 4px solid variables.$morado-letras
+
+.up
+    width: 60px
+    height: 60px
+    background: variables.$morado-letras
+    border-radius: 10px
+    position: fixed
+    bottom: 20px
+    right: 20px
+    z-index: 99
+    cursor: pointer
+    display: grid
+    place-items: center
+    .fa-solid
+        font-size: 30px
+
+.hidden
+    display: none
